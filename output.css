@@ -1,0 +1,81 @@
+/* Tailwind base styles */
+@tailwind base;
+
+/* Tailwind component styles */
+@tailwind components;
+
+/* Tailwind utility styles */
+@tailwind utilities;
+
+/* Custom styles */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.bg-primary {
+  background-color: #1d4ed8; /* Blue */
+}
+
+.bg-primary-600 {
+  background-color: #1e40af; /* Darker Blue */
+}
+
+.text-primary {
+  color: #1d4ed8; /* Blue */
+}
+
+.text-primary-600 {
+  color: #1e40af; /* Darker Blue */
+}
+
+.bg-secondary {
+  background-color: #10b981; /* Green */
+}
+
+.bg-secondary-600 {
+  background-color: #059669; /* Darker Green */
+}
+
+.text-secondary {
+  color: #10b981; /* Green */
+}
+
+.text-secondary-600 {
+  color: #059669; /* Darker Green */
+}
+
+.bg-yellow-500 {
+  background-color: #f59e0b; /* Yellow */
+}
+
+.bg-yellow-600 {
+  background-color: #d97706; /* Darker Yellow */
+}
+
+.text-yellow-500 {
+  color: #f59e0b; /* Yellow */
+}
+
+.text-yellow-600 {
+  color: #d97706; /* Darker Yellow */
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.text-white {
+  color: #ffffff; /* White *//* Green */
+}
+
+.text-green {
+  color: #10b981; /* Green */
+}
