@@ -7,14 +7,14 @@ error_reporting(E_ALL);
 require_once __DIR__ . '/../config/constants.php';
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/auth.php';
-require_once __DIR__ . '/../includes/header.php';
 
 // Start session only if not already started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
 // Include header
-require_once __DIR__ . '/../includes/header.php'; // Corrected path to header.php
+require_once __DIR__ . '/../includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,43 +22,178 @@ require_once __DIR__ . '/../includes/header.php'; // Corrected path to header.ph
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Zoo Management</title>
-    <link rel="stylesheet" href="/zoo-management/styles.css"> <!-- Ensure styles.css exists -->
+    <link rel="stylesheet" href="/zoo-management/output.css"> <!-- Updated to use output.css -->
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/zoo-management/images/hero-banner.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .section {
+            padding: 3rem 1.5rem;
+            background: white;
+            margin: 1.5rem auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+        }
+        .section h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .section p {
+            font-size: 1.2rem;
+            color: #555;
+            text-align: justify;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .team-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .team-card img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+        .map-placeholder {
+            background: #e0e0e0;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            color: #555;
+            font-size: 1.2rem;
+        }
+        .contact-info {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+        .contact-info strong {
+            color: #2c3e50;
+        }
+    </style>
 </head>
 <body>
-    <main class="container mx-auto p-6">
-        <section class="bg-white rounded-lg shadow-md p-6 mb-8">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Welcome to Our Zoo</h2>
-            <p class="text-gray-600">
-                Our zoo is home to over 500 animals representing more than 100 species. We are committed to conservation, education, and providing unforgettable experiences for our visitors.
+    <main>
+        <!-- Hero Banner -->
+        <section class="hero">
+            <h1>Welcome to Our Zoo</h1>
+            <p>Discover the wonders of wildlife and join us in our mission to protect nature.</p>
+        </section>
+
+        <!-- Mission Statement -->
+        <section class="section">
+            <h2>Our Mission</h2>
+            <p>
+                At our zoo, we are dedicated to conserving wildlife, educating the public, and creating a safe haven for animals. 
+                We strive to inspire a love for nature and foster a deeper understanding of the importance of biodiversity.
             </p>
         </section>
-        <section class="bg-white rounded-lg shadow-md p-6 mb-8">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Mission</h2>
-            <p class="text-gray-600">
-                We aim to protect endangered species, educate the public about wildlife, and create a safe and enriching environment for our animals.
+
+        <!-- History/Background -->
+        <section class="section">
+            <h2>Our History</h2>
+            <p>
+                Established in 1990, our zoo has grown from a small wildlife sanctuary to a world-class conservation center. 
+                Over the years, we have achieved numerous milestones, including the successful breeding of endangered species 
+                and partnerships with global conservation organizations.
             </p>
         </section>
-        <section class="bg-white rounded-lg shadow-md p-6">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Visit Us</h2>
-            <p class="text-gray-600">
-                Come and explore our zoo to learn more about the amazing creatures we care for. We look forward to your visit!
+
+        <!-- Team Section -->
+        <section class="section">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="../image/director.jpg" alt="Director">
+                    <h3 style="font-weight: 800; font-size: x-large;">Ikuzo Nzabanita Caleb</h3>
+                    <p>Director</p>
+                </div>
+                <div class="team-card">
+                    <img src="/zoo-management/images/zookeeper.jpg" alt="Head Zookeeper">
+                    <h3 style="font-weight: 800; font-size: x-large;">Kambale Muvunja Ezechias</h3>
+                    <p>Head Zookeeper</p>
+                </div>
+                <div class="team-card">
+                    <img src="../image/vegeterian.jpg" alt="Veterinarian">
+                    <h3 style="font-weight: 800; font-size: x-large;">Muhindo Ngesera Blessing</h3>
+                    <p>Veterinarian</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conservation Efforts -->
+        <section class="section">
+            <h2>Conservation Efforts</h2>
+            <p>
+                We are proud to collaborate with leading conservation organizations to protect endangered species and their habitats. 
+                Our efforts include breeding programs, habitat restoration, and community education initiatives.
             </p>
-            <ul class="text-gray-600 mt-4">
-                <li><strong>Opening Hours:</strong> Monday-Friday: 9:00 AM - 5:00 PM, Saturday-Sunday: 8:00 AM - 6:00 PM</li>
-                <li><strong>Location:</strong> 123 Zoo Avenue, Wildlife City, WC 12345</li>
-            </ul>
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215373510324!2d-73.987844924239!3d40.74844097138978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1711234247893!5m2!1sen!2sus" 
-                class="w-full h-48 mt-4 rounded border-0" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+        </section>
+
+        <!-- Visitor Statistics -->
+        <section class="section">
+            <h2>Visitor Statistics</h2>
+            <p>
+                Our zoo is home to over 500 animals representing more than 100 species. Each year, we welcome over 1 million visitors 
+                who come to experience the beauty of wildlife and learn about conservation.
+            </p>
+        </section>
+
+        <!-- Contact Information and Map -->
+        <section class="section">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <p><strong>Address:</strong> 123 Zoo Avenue, Wildlife City, WC 12345</p>
+                <p><strong>Email:</strong> contact@zoo-management.com</p>
+                <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+            </div>
+            <div class="map-placeholder">
+                <p>Map Placeholder</p>
+            </div>
         </section>
     </main>
     <?php
     // Include footer
-    require_once __DIR__ . '/../includes/footer.php'; // Corrected path to footer.php
+    require_once __DIR__ . '/../includes/footer.php';
     ?>
 </body>
 </html>
