@@ -1,7 +1,20 @@
 <?php
+// Enable error reporting for debugging
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once __DIR__ . '/../config/constants.php';
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/auth.php';
+
+// Establish database connection
+try {
+    $pdo = new PDO(DSN, DB_USER, DB_PASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
 
 // Require authentication
 require_auth();
@@ -117,6 +130,11 @@ $alerts_count = $pdo->query("SELECT COUNT(*) FROM alerts")->fetchColumn(); // Al
                     <h2 class="text-xl font-semibold text-gray-800 mb-4">Ticket Types</h2>
                     <canvas id="ticketTypesChart" height="250"></canvas>
                 </div>
+            </div>
+
+            <!-- Report Download Button -->
+            <div class="mb-8">
+                <a href="generate-report.php" class="bg-blue-500 text-white px-4 py-2 rounded">Download Report</a>
             </div>
         </main>
     </div>
