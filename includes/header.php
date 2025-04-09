@@ -35,7 +35,7 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-1">
                     <a href="<?php echo BASE_URL; ?>" class="py-4 px-2 text-gray-500 font-semibold hover:text-primary transition duration-300">Home</a>
-                    <a href="<?php echo USER_URL; ?>animals.php" class="py-4 px-2 text-gray-500 font-semibold hover:text-primary transition duration-300">Animals</a>
+                    <a href="<?php echo USER_URL; ?>../user/animals.php" class="py-4 px-2 text-gray-500 font-semibold hover:text-primary transition duration-300">Animals</a>
                     <a href="<?php echo USER_URL; ?>tickets.php" class="py-4 px-2 text-gray-500 font-semibold hover:text-primary transition duration-300">Tickets</a>
                     <a href="<?php echo USER_URL; ?>contact.php" class="py-4 px-2 text-gray-500 font-semibold hover:text-primary transition duration-300">Contact</a>
                     <a href="<?php echo USER_URL; ?>about.php" class="py-4 px-2 text-gray-500 font-semibold hover:text-primary transition duration-300">About</a>
