@@ -6,75 +6,63 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/../config/constants.php';
 require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../includes/auth.php';
-require_once __DIR__ . '/../includes/header.php';
 
-// Start session only if not already started
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-requireAuth();
+$animals = []; // Initialize animals array to avoid undefined variable errors
 
 // Fetch animals from the database
-$stmt = $pdo->query("SELECT * FROM animals");
-$animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
+try {
+    // Ensure DSN, DB_USER, and DB_PASS are defined in database.php
+    if (!defined('DSN') || !defined('DB_USER') || !defined('DB_PASS')) {
+        throw new Exception("Database configuration constants are not defined.");
+    }
 
-// Debugging: Check if animals are fetched
-if (empty($animals)) {
-    echo "<p class='text-red-500'>No animals found in the database. Please add some animals.</p>";
+    $pdo = new PDO(DSN, DB_USER, DB_PASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Query to fetch animals
+    $stmt = $pdo->query("SELECT name, description, image FROM animals");
+    $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Database error: " . $e->getMessage()); // Temporarily display the error
+} catch (Exception $e) {
+    die("Error: " . $e->getMessage()); // Temporarily display the error
 }
+
+// Include header
+require_once __DIR__ . '/../includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animals</title>
-    <link href="../assets/css/output.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3B82F6',
-                        secondary: '#10B981',
-                        danger: '#EF4444',
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Animals - Zoo Management</title>
+    <link rel="stylesheet" href="/zoo-management/output.css">
 </head>
-<body class="bg-gray-100">
-    <div class="container mx-auto p-4">
-        <h1 class="text-2xl font-bold">Animals</h1>
-        <p class="mt-2">Welcome to the Zoo Management System!</p>
-
-        <div class="bg-white rounded-lg shadow-md p-6">
-            <h1 class="text-3xl font-bold text-gray-800 mb-6">Our Animals</h1>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<body>
+    <main class="container mx-auto py-12">
+        <h1 class="text-3xl font-bold text-center mb-8">Our Animals</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <?php if (!empty($animals)): ?>
                 <?php foreach ($animals as $animal): ?>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="h-48 overflow-hidden">
-                            <img src="<?php echo htmlspecialchars($animal['image']); ?>" alt="<?php echo htmlspecialchars($animal['name']); ?>" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-xl font-bold text-gray-800 mb-1"><?php echo htmlspecialchars($animal['name']); ?></h3>
-                            <p class="text-sm text-gray-500 mb-2"><span class="font-semibold">Species:</span> <?php echo htmlspecialchars($animal['species']); ?></p>
-                            <p class="text-sm text-gray-500 mb-3"><span class="font-semibold">Habitat:</span> <?php echo htmlspecialchars($animal['habitat']); ?></p>
-                            <p class="text-gray-600 mb-4"><?php echo htmlspecialchars($animal['description']); ?></p>
-                            <button class="text-primary font-medium hover:underline">View Details</button>
-                        </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <img src="/zoo-management/uploads/<?php echo file_exists(__DIR__ . '/../uploads/' . $animal['image']) 
+                            ? htmlspecialchars($animal['image']) 
+                            : 'placeholder.jpg'; ?>" 
+                            alt="<?php echo htmlspecialchars($animal['name']); ?>" 
+                            class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold mb-2"><?php echo htmlspecialchars($animal['name']); ?></h3>
+                        <p class="text-gray-600"><?php echo htmlspecialchars($animal['description']); ?></p>
                     </div>
                 <?php endforeach; ?>
-            </div>
+            <?php else: ?>
+                <p class="text-center text-gray-600">No animals found.</p>
+            <?php endif; ?>
         </div>
-    </div>
+    </main>
+    <?php
+    // Include footer
+    require_once __DIR__ . '/../includes/footer.php';
+    ?>
 </body>
 </html>
-<?php
-require_once __DIR__ . '/../includes/footer.php';
-?>
