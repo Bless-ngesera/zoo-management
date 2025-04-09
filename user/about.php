@@ -34,7 +34,7 @@ require_once __DIR__ . '/../includes/header.php';
             padding: 0;
         }
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/zoo-management/images/hero-banner.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../image/zoo-home.jpg') no-repeat center center/cover;
             color: white;
             text-align: center;
             padding: 5rem 2rem;
@@ -170,7 +170,10 @@ require_once __DIR__ . '/../includes/header.php';
     <main>
         <!-- Hero Banner -->
         <section class="hero">
-            <h1>Welcome to Our Zoo</h1>
+            <h1>About 
+            <span class="font-semibold text-gray-500 text-6xl" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#10B981]">LOFOE ZOO</span> 
+            </h1>
             <p>Discover the wonders of wildlife and join us in our mission to protect nature.</p>
         </section>
 
