@@ -47,6 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Invalid username or password.";
     }
 }
+
+// Include header
+require_once __DIR__ . '/includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,6 +77,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background-image: url('image/zoo-bg.jpg');
             background-size: cover;
             background-position: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .form {
             background: rgba(255, 255, 255, 0.2); /* Light transparent background */
@@ -85,27 +98,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="form">
-    <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
-        <h1 class="text-2xl font-bold mb-4">Login</h1>
-        <?php if (isset($error)): ?>
-            <p class="text-red-500 mb-4"><?php echo $error; ?></p>
-        <?php endif; ?>
-        <form method="POST" action="">
-            <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">
-            <div class="mb-4">
-                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
-                <input type="text" id="username" name="username" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+<body>
+    <div class="main-content">
+        <div class="form">
+            <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
+                <h1 class="text-2xl font-bold mb-4">Login</h1>
+                <?php if (isset($error)): ?>
+                    <p class="text-red-500 mb-4"><?php echo $error; ?></p>
+                <?php endif; ?>
+                <form method="POST" action="">
+                    <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">
+                    <div class="mb-4">
+                        <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                        <input type="text" id="username" name="username" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" id="password" name="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+                    </div>
+                    <button type="submit" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-primary-dark">Login</button>
+                </form>
             </div>
-            <div class="mb-4">
-                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                <input type="password" id="password" name="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
-            </div>
-            <button type="submit" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-primary-dark">Login</button>
-        </form>
+        </div>
     </div>
-    </div>
-    
+    <?php
+    // Include footer
+    require_once __DIR__ . '/includes/footer.php';
+    ?>
 </body>
 </html>
