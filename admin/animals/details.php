@@ -1,6 +1,15 @@
 <?php
 require_once __DIR__ . '/../../config/constants.php';
 require_once __DIR__ . '/../../config/database.php';
+
+// Establish database connection
+try {
+    $pdo = new PDO(DSN, DB_USER, DB_PASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
+
 require_once __DIR__ . '/../../includes/auth.php';
 require_auth();
 require_role('admin');
