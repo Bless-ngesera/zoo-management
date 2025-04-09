@@ -1,13 +1,30 @@
 <?php
+// Enable error reporting for debugging
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once __DIR__ . '/../../config/constants.php';
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../includes/auth.php';
 require_auth();
 require_role('admin');
 
-// Fetch animals
-$stmt = $pdo->query("SELECT * FROM animals");
-$animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// Establish database connection
+try {
+    $pdo = new PDO(DSN, DB_USER, DB_PASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
+
+// Fetch animals from the database
+try {
+    $stmt = $pdo->query("SELECT id, name, description, image FROM animals");
+    $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Query failed: " . $e->getMessage());
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,33 +61,41 @@ $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <table class="min-w-full bg-white rounded-lg shadow-md">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Species</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        <?php foreach ($animals as $animal): ?>
+                        <?php if (!empty($animals)): ?>
+                            <?php foreach ($animals as $animal): ?>
+                                <tr>
+                                    <td class="px-6 py-4"><?php echo htmlspecialchars($animal['id']); ?></td>
+                                    <td class="px-6 py-4"><?php echo htmlspecialchars($animal['name']); ?></td>
+                                    <td class="px-6 py-4"><?php echo htmlspecialchars($animal['description']); ?></td>
+                                    <td class="px-6 py-4">
+                                        <img src="/zoo-management/<?php echo htmlspecialchars($animal['image']); ?>" alt="<?php echo htmlspecialchars($animal['name']); ?>" class="w-16 h-16 object-cover rounded">
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="details.php?id=<?php echo $animal['id']; ?>" class="text-primary hover:underline">
+                                            <i class="fas fa-eye mr-1"></i>View
+                                        </a>
+                                        <a href="edit.php?id=<?php echo $animal['id']; ?>" class="text-primary hover:underline ml-4">
+                                            <i class="fas fa-edit mr-1"></i>Edit
+                                        </a>
+                                        <a href="delete.php?id=<?php echo $animal['id']; ?>" class="text-red-500 hover:underline ml-4" onclick="return confirm('Are you sure you want to delete?')">
+                                            <i class="fas fa-trash-alt mr-1"></i>Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
                             <tr>
-                                <td class="px-6 py-4">
-                                    <img src="/zoo-management/<?php echo htmlspecialchars($animal['image']); ?>" alt="<?php echo htmlspecialchars($animal['name']); ?>" class="w-16 h-16 object-cover rounded">
-                                </td>
-                                <td class="px-6 py-4"><?php echo htmlspecialchars($animal['name']); ?></td>
-                                <td class="px-6 py-4"><?php echo htmlspecialchars($animal['species']); ?></td>
-                                <td class="px-6 py-4">
-                                    <a href="details.php?id=<?php echo $animal['id']; ?>" class="text-primary hover:underline">
-                                        <i class="fas fa-eye mr-1"></i>View
-                                    </a>
-                                    <a href="edit.php?id=<?php echo $animal['id']; ?>" class="text-primary hover:underline ml-4">
-                                        <i class="fas fa-edit mr-1"></i>Edit
-                                    </a>
-                                    <a href="delete.php?id=<?php echo $animal['id']; ?>" class="text-red-500 hover:underline ml-4" onclick="return confirm('Are you sure you want to delete?')">
-                                        <i class="fas fa-trash-alt mr-1"></i>Delete
-                                    </a>
-                                </td>
+                                <td colspan="5" class="text-center px-6 py-4">No animals found.</td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
