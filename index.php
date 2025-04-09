@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once __DIR__ . '/config/constants.php';
 require_once __DIR__ . '/includes/header.php';
 ?>
@@ -76,12 +80,11 @@ require_once __DIR__ . '/includes/header.php';
             <h1 class="text-5xl font-bold mb-4 animate-slide">Welcome to <span style="color: #3B82F6;">LOFOE</span> <span style="color: #10B981;">ZOO</span></h1>
             <p class="text-xl mb-6">Discover the wonders of wildlife and join us in our mission to protect nature.</p>
             <div class="flex justify-center gap-4">
-                <a href="tickets.php" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark">Buy Tickets</a>
+                <a href="<?php echo BASE_URL; ?>user/tickets.php" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark">Buy Tickets</a>
                 <a href="animals.php" class="bg-secondary text-white px-6 py-3 rounded-lg hover:bg-secondary-dark">Explore Animals</a>
             </div>
         </div>
     </header>
-
     <!-- Quick Stats -->
     <section class="container mx-auto py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
