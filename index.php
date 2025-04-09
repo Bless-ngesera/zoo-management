@@ -12,14 +12,14 @@ require_once __DIR__ . '/includes/header.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .hero {
-            background: url('images/zoo-hero.jpg') no-repeat center center/cover;
+            background: url('image/zoo-home.jpg') no-repeat center center/cover;
             color: white;
             text-align: center;
             padding: 6rem 2rem;
             position: relative;
         }
         .hero-overlay {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             position: absolute;
             top: 0;
             left: 0;
