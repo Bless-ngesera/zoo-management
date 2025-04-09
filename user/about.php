@@ -86,8 +86,8 @@ require_once __DIR__ . '/../includes/header.php';
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         .team-card img {
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             margin-bottom: 1rem;
         }
@@ -108,6 +108,54 @@ require_once __DIR__ . '/../includes/header.php';
         }
         .contact-info strong {
             color: #2c3e50;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .section {
+                padding: 2rem 1rem;
+            }
+            .section h2 {
+                font-size: 2rem;
+            }
+            .section p {
+                font-size: 1rem;
+            }
+            .team-card img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .section {
+                padding: 1.5rem 0.5rem;
+            }
+            .section h2 {
+                font-size: 1.8rem;
+            }
+            .section p {
+                font-size: 0.9rem;
+            }
+            .team-card img {
+                width: 100px;
+                height: 100px;
+            }
         }
     </style>
 </head>
@@ -184,7 +232,7 @@ require_once __DIR__ . '/../includes/header.php';
             <div class="contact-info">
                 <p><strong>Address:</strong> 123 Zoo Avenue, Wildlife City, WC 12345</p>
                 <p><strong>Email:</strong> contact@zoo-management.com</p>
-                <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                <p><strong>Phone:</strong> +256 763 123 456</p>
             </div>
             <div class="map-placeholder">
                 <p>Map Placeholder</p>
