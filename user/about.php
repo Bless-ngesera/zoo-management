@@ -101,6 +101,13 @@ require_once __DIR__ . '/../includes/header.php';
             color: #555;
             font-size: 1.2rem;
         }
+        .map-placeholder iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
         .contact-info {
             text-align: center;
             font-size: 1.2rem;
@@ -235,7 +242,12 @@ require_once __DIR__ . '/../includes/header.php';
                 <p><strong>Phone:</strong> +256 763 123 456</p>
             </div>
             <div class="map-placeholder">
-                <p>Map Placeholder</p>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.816511747002!2d32.4768286735573!3d0.054554664372570616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177d869122a1c245%3A0x42f1a3495527a926!2sUganda%20Wildlife%20Conservation%20Education%20Centre!5e0!3m2!1sen!2sug!4v1744161260409!5m2!1sen!2sug" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </section>
     </main>
