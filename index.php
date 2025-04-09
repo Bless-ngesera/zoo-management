@@ -5,84 +5,243 @@ require_once __DIR__ . '/includes/header.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ...existing code... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoo Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .hero {
+            background: url('images/zoo-hero.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .stats-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        @keyframes slideInOut {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            25% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            75% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        .animate-slide {
+            display: inline-block;
+            animation: slideInOut 5s linear infinite;
+        }
+    </style>
 </head>
 <body>
-    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-        <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-gray-800 mb-2">Welcome to Zoo Management System</h1>
-            <p class="text-gray-600">Explore our amazing collection of animals and plan your visit</p>
+    <!-- Hero Banner -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="text-5xl font-bold mb-4 animate-slide">Welcome to <span style="color: #3B82F6;">LOFOE</span> <span style="color: #10B981;">ZOO</span></h1>
+            <p class="text-xl mb-6">Discover the wonders of wildlife and join us in our mission to protect nature.</p>
+            <div class="flex justify-center gap-4">
+                <a href="tickets.php" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark">Buy Tickets</a>
+                <a href="animals.php" class="bg-secondary text-white px-6 py-3 rounded-lg hover:bg-secondary-dark">Explore Animals</a>
+            </div>
         </div>
+    </header>
 
+    <!-- Quick Stats -->
+    <section class="container mx-auto py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="stats-card">
+                <h2 class="text-3xl font-bold text-primary">500+</h2>
+                <p class="text-gray-600">Animal Species</p>
+            </div>
+            <div class="stats-card">
+                <h2 class="text-3xl font-bold text-primary">1M+</h2>
+                <p class="text-gray-600">Annual Visitors</p>
+            </div>
+            <div class="stats-card">
+                <h2 class="text-3xl font-bold text-primary">50+</h2>
+                <p class="text-gray-600">Conservation Projects</p>
+            </div>
+            <div class="stats-card">
+                <h2 class="text-3xl font-bold text-primary">30+</h2>
+                <p class="text-gray-600">Years in Operation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Animals -->
+    <section class="container mx-auto py-12">
+        <h2 class="text-3xl font-bold text-center mb-8">Featured Animals</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Featured Animals -->
-            <div class="bg-primary-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-                <div class="text-center mb-4">
-                    <i class="fas fa-paw text-4xl text-primary mb-2"></i>
-                    <h2 class="text-xl font-semibold text-gray-800">Our Animals</h2>
-                </div>
-                <p class="text-gray-600 mb-4">Discover our diverse collection of animals from around the world.</p>
-                <a href="<?php echo USER_URL; ?>animals.php" class="inline-block bg-primary text-white px-4 py-2 rounded hover:bg-primary-600 transition">
-                    View Animals
-                </a>
+            <!-- Animal Card -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="image/lion.jpg" alt="Animal 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">Lion</h3>
+                <p class="text-gray-600">lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
             </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="image/leopard.jpg" alt="Animal 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">Lion</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="image/panda.jpg" alt="Animal 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">Lion</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="image/monkey.jpg" alt="Animal 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">Lion</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="image/gorilla.jpg" alt="Animal 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">Lion</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="image/folk.jpg" alt="Animal 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">Lion</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="image/zebraa.jpg" alt="Animal 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">Lion</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="image/zebra.jpg" alt="Animal 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">Lion</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="image/croco.jpg" alt="Animal 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">Lion</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="image/snake.jpg" alt="Animal 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">Lion</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="image/parrots.jpg" alt="Animal 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">Lion</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="image/calao.jpg" alt="Animal 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">Lion</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <img src="image/penguin.jpg" alt="Animal 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold mb-2">Lion</h3>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            
 
-            <!-- Tickets -->
-            <div class="bg-secondary-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-                <div class="text-center mb-4">
-                    <i class="fas fa-ticket-alt text-4xl text-secondary mb-2"></i>
-                    <h2 class="text-xl font-semibold text-gray-800">Plan Your Visit</h2>
-                </div>
-                <p class="text-gray-600 mb-4">Book your tickets online for a seamless zoo experience.</p>
-                <a href="<?php echo USER_URL; ?>tickets.php" class="inline-block bg-secondary text-white px-4 py-2 rounded hover:bg-secondary-600 transition">
-                    Get Tickets
-                </a>
-            </div>
 
-            <!-- Contact -->
-            <div class="bg-yellow-50 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-                <div class="text-center mb-4">
-                    <i class="fas fa-envelope text-4xl text-yellow-500 mb-2"></i>
-                    <h2 class="text-xl font-semibold text-gray-800">Contact Us</h2>
-                </div>
-                <p class="text-gray-600 mb-4">Have questions? Reach out to our friendly staff.</p>
-                <a href="<?php echo USER_URL; ?>contact.php" class="inline-block bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition">
-                    Contact
-                </a>
-            </div>
+            <!-- ...repeat for other animals... -->
         </div>
+    </section>
 
-        <div class="mt-12 bg-gray-50 p-6 rounded-lg">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">About Our Zoo</h2>
-            <p class="text-gray-600 mb-4">
-                Our zoo is home to over 500 animals representing more than 100 species. We're committed to conservation,
-                education, and providing unforgettable experiences for our visitors.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Opening Hours</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>Monday-Friday: 9:00 AM - 5:00 PM</li>
-                        <li>Saturday-Sunday: 8:00 AM - 6:00 PM</li>
-                        <li>Holidays: 8:00 AM - 7:00 PM</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Location</h3>
-                    <p class="text-gray-600">123 Zoo Avenue, Wildlife City, WC 12345</p>
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215373510324!2d-73.987844924239!3d40.74844097138978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1711234247893!5m2!1sen!2sus" 
-                        class="w-full h-48 mt-2 rounded border-0" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
+    <!-- Upcoming Events -->
+    <section class="container mx-auto py-12">
+        <h2 class="text-3xl font-bold text-center mb-8">Upcoming Events</h2>
+        <div class="flex overflow-x-auto gap-6">
+            <!-- Event Card -->
+            <div class="bg-white rounded-lg shadow-md p-6 min-w-[300px]">
+                <h3 class="text-xl font-bold mb-2">Wildlife Photography Workshop</h3>
+                <p class="text-gray-600 mb-4">Date: 25th June 2023</p>
+                <p class="text-gray-600 mb-4">Learn the art of wildlife photography with experts.</p>
+                <a href="event-details.php?id=1" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark">Book Now</a>
             </div>
+            <!-- ...repeat for other events... -->
         </div>
-    </div>
+    </section>
+
+    <!-- Visitor Information -->
+    <section class="container mx-auto py-12">
+        <h2 class="text-3xl font-bold text-center mb-8">Visitor Information</h2>
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <details class="mb-4">
+                <summary class="font-bold text-lg">Opening Hours</summary>
+                <p class="text-gray-600 mt-2">Monday-Friday: 9:00 AM - 5:00 PM</p>
+                <p class="text-gray-600">Saturday-Sunday: 8:00 AM - 6:00 PM</p>
+            </details>
+            <details class="mb-4">
+                <summary class="font-bold text-lg">Ticket Prices</summary>
+                <p class="text-gray-600 mt-2">Adults: $20, Children: $10</p>
+            </details>
+            <details class="mb-4">
+                <summary class="font-bold text-lg">Parking & Accessibility</summary>
+                <p class="text-gray-600 mt-2">Free parking available. Wheelchair accessible.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="container mx-auto py-12">
+        <h2 class="text-3xl font-bold text-center mb-8">What Our Visitors Say</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Testimonial Card -->
+            <div class="testimonial-card">
+                <p class="text-gray-600 mb-4">"An amazing experience! The staff were friendly, and the animals were well cared for."</p>
+                <p class="text-yellow-500">⭐⭐⭐⭐⭐</p>
+                <p class="text-gray-600 mt-2">- John Doe</p>
+            </div>
+            <!-- ...repeat for other testimonials... -->
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="container mx-auto py-12 text-center">
+        <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+        <p class="text-gray-600 mb-6">Subscribe to our newsletter for the latest updates and events.</p>
+        <form action="subscribe.php" method="POST" class="flex justify-center gap-4">
+            <input type="email" name="email" placeholder="Enter your email" class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+            <button type="submit" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark">Subscribe</button>
+        </form>
+    </section>
+
+    <?php
+    require_once __DIR__ . '/includes/footer.php';
+    ?>
 </body>
 </html>
-<?php
-require_once __DIR__ . '/includes/footer.php';
-?>
