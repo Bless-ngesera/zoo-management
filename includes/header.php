@@ -27,7 +27,9 @@
                 <div class="flex space-x-7">
                     <div>
                         <a href="<?php echo BASE_URL; ?>" class="flex items-center py-4 px-2">
-                            <span class="font-semibold text-gray-500 text-lg">Zoo Management</span>
+                            <span class="font-semibold text-gray-500 text-4xl" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> 
+                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#10B981]">LOFOE ZOO</span> 
+                            </span>
                         </a>
                     </div>
                 </div>
@@ -43,3 +45,5 @@
         </div>
     </nav>
     <main class="container mx-auto px-4 py-8"></main>
+</body>
+</html>
