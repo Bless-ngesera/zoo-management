@@ -38,6 +38,7 @@ require_once __DIR__ . '/../includes/header.php';
             color: white;
             text-align: center;
             padding: 5rem 2rem;
+
         }
         .hero h1 {
             font-size: 3.5rem;
@@ -58,6 +59,7 @@ require_once __DIR__ . '/../includes/header.php';
         }
         .section h2 {
             font-size: 2.5rem;
+            font-weight: bolder;
             color: #2c3e50;
             margin-bottom: 1rem;
             text-align: center;
@@ -179,7 +181,7 @@ require_once __DIR__ . '/../includes/header.php';
 
         <!-- Mission Statement -->
         <section class="section">
-            <h2>Our Mission</h2>
+            <h2>OUR MISSION</h2>
             <p>
                 At our zoo, we are dedicated to conserving wildlife, educating the public, and creating a safe haven for animals. 
                 We strive to inspire a love for nature and foster a deeper understanding of the importance of biodiversity.
@@ -188,7 +190,7 @@ require_once __DIR__ . '/../includes/header.php';
 
         <!-- History/Background -->
         <section class="section">
-            <h2>Our History</h2>
+            <h2>OUR HISTORY</h2>
             <p>
                 Established in 1990, our zoo has grown from a small wildlife sanctuary to a world-class conservation center. 
                 Over the years, we have achieved numerous milestones, including the successful breeding of endangered species 
@@ -198,7 +200,7 @@ require_once __DIR__ . '/../includes/header.php';
 
         <!-- Team Section -->
         <section class="section">
-            <h2>Meet Our Team</h2>
+            <h2>MEET OUR TEAM</h2>
             <div class="team-grid">
                 <div class="team-card">
                     <img src="../image/director.jpg" alt="Director">
@@ -220,7 +222,7 @@ require_once __DIR__ . '/../includes/header.php';
 
         <!-- Conservation Efforts -->
         <section class="section">
-            <h2>Conservation Efforts</h2>
+            <h2>CONVERSATION EFFORTS</h2>
             <p>
                 We are proud to collaborate with leading conservation organizations to protect endangered species and their habitats. 
                 Our efforts include breeding programs, habitat restoration, and community education initiatives.
@@ -229,7 +231,7 @@ require_once __DIR__ . '/../includes/header.php';
 
         <!-- Visitor Statistics -->
         <section class="section">
-            <h2>Visitor Statistics</h2>
+            <h2>VISITORS STATISTICS</h2>
             <p>
                 Our zoo is home to over 500 animals representing more than 100 species. Each year, we welcome over 1 million visitors 
                 who come to experience the beauty of wildlife and learn about conservation.
@@ -238,7 +240,7 @@ require_once __DIR__ . '/../includes/header.php';
 
         <!-- Contact Information and Map -->
         <section class="section">
-            <h2>Contact Us</h2>
+            <h2>CONTACT US</h2>
             <div class="contact-info">
                 <p><strong>Address:</strong> 123 Zoo Avenue, Wildlife City, WC 12345</p>
                 <p><strong>Email:</strong> contact@zoo-management.com</p>
