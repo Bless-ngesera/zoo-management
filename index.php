@@ -77,11 +77,11 @@ require_once __DIR__ . '/includes/header.php';
     <header class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="text-5xl font-bold mb-4 animate-slide">Welcome to <span style="color: #3B82F6;">LOFOE</span> <span style="color: #10B981;">ZOO</span></h1>
+            <h1 class="text-5xl font-bold mb-4 animate-slide">Welcome to <span style="color: #3B82F6;">BLESS</span> <span style="color: #10B981;">ZOO</span></h1>
             <p class="text-xl mb-6">Discover the wonders of wildlife and join us in our mission to protect nature.</p>
             <div class="flex justify-center gap-4">
                 <a href="<?php echo BASE_URL; ?>user/tickets.php" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark">Buy Tickets</a>
-                <a href="animals.php" class="bg-secondary text-white px-6 py-3 rounded-lg hover:bg-secondary-dark">Explore Animals</a>
+                <a href="user/animals.php" class="bg-secondary text-white px-6 py-3 rounded-lg hover:bg-secondary-dark">Explore Animals</a>
             </div>
         </div>
     </header>

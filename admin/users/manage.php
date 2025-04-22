@@ -23,6 +23,17 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Manage Users</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #3B82F6; /* Set background color */
+        }
+        #sidebar {
+            background-color: #3B82F6; /* Set sidebar background color */
+        }
+        #showSidebar {
+            background-color: #3B82F6; /* Set hideSidebar button background color */
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
     <!-- Top Navigation Bar -->
@@ -45,32 +56,17 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <div class="flex pt-16">
-        <!-- Sidebar -->
-        <aside id="sidebar" class="w-64 bg-[#3B82F6] text-white h-screen fixed transition-transform transform">
-            <div class="p-4 text-center font-bold text-xl border-b border-blue-500">
-                Admin
-            </div>
-            <nav class="flex-1">
-                <ul class="space-y-2">
-                    <li><a href="/zoo-management/admin/dashboard.php" class="block py-2 px-4 hover:bg-blue-700"><i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a></li>
-                    <li><a href="/zoo-management/admin/animals/manage.php" class="block py-2 px-4 hover:bg-blue-700"><i class="fas fa-paw mr-2"></i> Manage Animals</a></li>
-                    <li><a href="/zoo-management/admin/animals/details.php" class="block py-2 px-4 hover:bg-blue-700"><i class="fas fa-info-circle mr-2"></i> View Animals</a></li>
-                    <li><a href="/zoo-management/admin/users/manage.php" class="block py-2 px-4 hover:bg-blue-700"><i class="fas fa-users mr-2"></i> Users</a></li>
-                    <li><a href="/zoo-management/admin/reports/daily.php" class="block py-2 px-4 hover:bg-blue-700"><i class="fas fa-chart-line mr-2"></i> Reports</a></li>
-                    <li><a href="/zoo-management/chat/index.php" class="block py-2 px-4 hover:bg-blue-700"><i class="fas fa-comments mr-2"></i> Chatrooms</a></li>
-                    <li><a href="/zoo-management/email/index.php" class="block py-2 px-4 hover:bg-blue-700"><i class="fas fa-envelope mr-2"></i> Email</a></li>
-                </ul>
-            </nav>
-        </aside>
-
-        <!-- Sidebar Toggle Button -->
-        <button id="sidebarToggle" class="fixed top-20 left-64 bg-blue-600 text-white p-2 rounded-full shadow-md focus:outline-none transition-transform transform">
-            <i class="fas fa-chevron-left"></i>
-        </button>
+        <!-- Include Sidebar -->
+        <?php include __DIR__ . '/../../includes/sidebar.php'; ?>
 
         <!-- Main Content -->
-        <main class="flex-1 p-6 ml-64 transition-all">
-            <h1 class="text-3xl font-bold text-gray-800 mb-6">Manage Users</h1>
+        <main id="mainContent" class="flex-1 p-6 ml-64 transition-all">
+            <div class="flex flex-wrap justify-between items-center mb-4 gap-4">
+                <h1 class="text-3xl font-bold text-gray-800">Manage Users</h1>
+                <a href="add.php" class="bg-[#10B981] text-white px-4 py-2 rounded-lg hover:bg-primary-600">
+                    <i class="fas fa-user-plus mr-2"></i>Add New User
+                </a>
+            </div>
             <table class="min-w-full bg-white rounded-lg shadow-md">
                 <thead class="bg-gray-50">
                     <tr>
@@ -112,19 +108,25 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
         });
 
+        const hideSidebar = document.getElementById('hideSidebar');
+        const showSidebar = document.getElementById('showSidebar');
         const sidebar = document.getElementById('sidebar');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const mainContent = document.querySelector('main');
+        const mainContent = document.getElementById('mainContent');
 
-        sidebarToggle.addEventListener('click', function () {
-            sidebar.classList.toggle('-translate-x-full');
-            if (sidebar.classList.contains('-translate-x-full')) {
-                sidebarToggle.style.left = '0.5rem';
-                mainContent.style.marginLeft = '0';
-            } else {
-                sidebarToggle.style.left = '16rem';
-                mainContent.style.marginLeft = '16rem';
-            }
+        hideSidebar.addEventListener('click', function () {
+            sidebar.classList.add('-translate-x-full');
+            mainContent.classList.remove('ml-64');
+            mainContent.classList.add('ml-0');
+            hideSidebar.classList.add('hidden');
+            showSidebar.classList.remove('hidden');
+        });
+
+        showSidebar.addEventListener('click', function () {
+            sidebar.classList.remove('-translate-x-full');
+            mainContent.classList.add('ml-64');
+            mainContent.classList.remove('ml-0');
+            showSidebar.classList.add('hidden');
+            hideSidebar.classList.remove('hidden');
         });
     });
     </script>

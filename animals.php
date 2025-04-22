@@ -4,10 +4,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once __DIR__ . 'config/constants.php';
-require_once __DIR__ . 'config/database.php';
-require_once __DIR__ . 'includes/auth.php';
-require_once __DIR__ . 'includes/header.php';
+require_once __DIR__ . '/config/constants.php';
+require_once __DIR__ . '/config/database.php';
+require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/header.php';
 
 // Start session only if not already started
 if (session_status() === PHP_SESSION_NONE) {
@@ -59,7 +59,9 @@ if (empty($animals)) {
                 <?php foreach ($animals as $animal): ?>
                     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                         <div class="h-48 overflow-hidden">
-                            <img src="<?php echo htmlspecialchars($animal['image']); ?>" alt="<?php echo htmlspecialchars($animal['name']); ?>" class="w-full h-full object-cover">
+                            <img src="<?php echo htmlspecialchars(!empty($animal['image']) ? $animal['image'] : 'assets/images/placeholder.png'); ?>" 
+                                 alt="<?php echo htmlspecialchars($animal['name']); ?>" 
+                                 class="w-full h-full object-cover">
                         </div>
                         <div class="p-4">
                             <h3 class="text-xl font-bold text-gray-800 mb-1"><?php echo htmlspecialchars($animal['name']); ?></h3>

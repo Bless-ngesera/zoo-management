@@ -108,7 +108,7 @@ require_once __DIR__ . '/includes/header.php';
     </style>
 </head>
 <body>
-    <div class="main-content">
+    <div class="main-content mb-12">
         <div class="form">
             <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
                 <h1 class="text-2xl font-bold mb-4">Login</h1>

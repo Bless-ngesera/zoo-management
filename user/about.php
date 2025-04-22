@@ -172,9 +172,9 @@ require_once __DIR__ . '/../includes/header.php';
     <main>
         <!-- Hero Banner -->
         <section class="hero">
-            <h1>About 
+            <h1>ABOUT
             <span class="font-semibold text-gray-500 text-6xl" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> 
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#10B981]">LOFOE ZOO</span> 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-[#10B981]">BLESS ZOO</span> 
             </h1>
             <p>Discover the wonders of wildlife and join us in our mission to protect nature.</p>
         </section>
@@ -242,9 +242,9 @@ require_once __DIR__ . '/../includes/header.php';
         <section class="section">
             <h2>CONTACT US</h2>
             <div class="contact-info">
-                <p><strong>Address:</strong> 123 Zoo Avenue, Wildlife City, WC 12345</p>
-                <p><strong>Email:</strong> contact@zoo-management.com</p>
-                <p><strong>Phone:</strong> +256 763 123 456</p>
+                <p><strong>Address:</strong> Plot 56/57 Lugard Avenue, Johnston Rd, Entebbe</p>
+                <p><strong>Email:</strong> contact@blesszoo-management.com</p>
+                <p><strong>Phone:</strong> +256 763 321 655 </p>
             </div>
             <div class="map-placeholder">
                 <iframe 

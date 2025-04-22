@@ -131,11 +131,6 @@ $alerts_count = $pdo->query("SELECT COUNT(*) FROM alerts")->fetchColumn(); // Al
                     <canvas id="ticketTypesChart" height="250"></canvas>
                 </div>
             </div>
-
-            <!-- Report Download Button -->
-            <div class="mb-8">
-                <a href="generate-report.php" class="bg-blue-500 text-white px-4 py-2 rounded">Download Report</a>
-            </div>
         </main>
     </div>
 
@@ -202,14 +197,12 @@ $alerts_count = $pdo->query("SELECT COUNT(*) FROM alerts")->fetchColumn(); // Al
         new Chart(ticketTypesCtx, {
             type: 'doughnut',
             data: {
-                labels: ['Indian', 'Foreign', 'Group', 'Student'],
+                labels: ['Ugandans', 'Foreigners'],
                 datasets: [{
-                    data: [65, 25, 5, 5],
+                    data: [65, 180],
                     backgroundColor: [
                         'rgba(59, 130, 246, 0.7)',
-                        'rgba(16, 185, 129, 0.7)',
-                        'rgba(234, 179, 8, 0.7)',
-                        'rgba(239, 68, 68, 0.7)'
+                        'rgba(16, 185, 129, 0.7)'
                     ],
                     borderWidth: 1
                 }]

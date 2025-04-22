@@ -5,7 +5,7 @@
     <!-- Profile Dropdown -->
     <div class="relative">
         <button id="profileDropdownButton" class="flex items-center space-x-2 bg-purple-600 text-white px-4 py-2 rounded-lg focus:outline-none">
-            <img src="/zoo-management/uploads/default-avatar.png" alt="Admin Avatar" class="w-8 h-8 rounded-full">
+            <img src="/zoo-management/image/admin.png" alt="Admin Avatar" class="w-8 h-8 rounded-full">
             <span>Admin</span>
             <i class="fas fa-chevron-down"></i>
         </button>

@@ -3,7 +3,7 @@
     <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
         <!-- Branding & Description -->
         <div>
-            <img src="path/to/logo.png" alt="Zoo Logo" class="mb-4 w-16 h-16">
+            <img src="../uploads/zms_logo.jpg" alt="Zoo Logo" class="mb-4 w-18 h-16">
             <p class="text-sm">Conserving wildlife since 1990. Join us in protecting endangered species and their habitats.</p>
         </div>
         
@@ -22,9 +22,9 @@
         <div>
             <h3 class="font-semibold text-lg mb-4">Contact Info</h3>
             <ul class="space-y-2 text-sm">
-                <li>123 Wildlife Ave, Green City</li>
-                <li>Phone: (123) 456-7890</li>
-                <li>Email: <a href="mailto:info@zooms.com" class="hover:text-yellow-400">info@zooms.com</a></li>
+                <li>Plot 56/57 Lugard Avenue, Johnston Rd, Entebbe</li>
+                <li>Phone: +256 763 321 655</li>
+                <li>Email: <a href="mailto:contact@blesszoo-management.com" class="hover:text-yellow-400">info@zooms.com</a></li>
                 <li>Opening Hours: 9:00 AM - 6:00 PM</li>
             </ul>
         </div>
@@ -50,7 +50,7 @@
                 <a href="#" class="hover:text-yellow-400" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
             <div class="text-sm text-center md:text-left">
-                &copy; <?php echo date('Y'); ?> ZooMS. All rights reserved. 
+                &copy; <?php echo date('Y'); ?> BLESSZooMS. All rights reserved. 
                 <a href="#" class="hover:text-yellow-400">Privacy Policy</a> | 
                 <a href="#" class="hover:text-yellow-400">Terms of Service</a>
             </div>
