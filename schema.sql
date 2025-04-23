@@ -57,25 +57,21 @@ CREATE TABLE `animals` (
 -- Table structure for table `tickets`
 --
 
-CREATE TABLE `tickets` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ticket_number` varchar(20) NOT NULL,
-  `type` enum('indian','foreign','family','annual') NOT NULL,
-  `visitor_name` varchar(100) NOT NULL,
-  `contact_number` varchar(20) NOT NULL,
-  `adults` int(11) NOT NULL DEFAULT 1,
-  `children` int(11) NOT NULL DEFAULT 0,
-  `visit_date` date NOT NULL,
-  `total_amount` decimal(10,2) NOT NULL,
-  `payment_status` enum('paid','pending','refunded') NOT NULL DEFAULT 'paid',
-  `created_by` int(11) DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `ticket_number` (`ticket_number`),
-  KEY `created_by` (`created_by`),
-  CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE tickets (
+ full_name VARCHAR(255) NOT NULL,
+ email VARCHAR(255) NOT NULL,
+ phone VARCHAR(20) NOT NULL,
+ ticket_type VARCHAR(50) NOT NULL,
+ adults INT NOT NULL,
+ children INT NOT NULL,
+ total_amount DECIMAL(10, 2) NOT NULL,
+ booking_date DATETIME NOT NULL
+);
 
+
+
+ ALTER TABLE tickets
+ ADD COLUMN ticket_id INT PRIMARY KEY AUTO_INCREMENT;
 --
 -- Table structure for table `settings`
 --
